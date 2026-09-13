@@ -215,7 +215,7 @@
 | P7-07 | Audit repository history for credentials and sensitive data | ✅ | Full-history gitleaks job and manual committed-evidence review find no sensitive values |
 | P7-08 | Publish public GitHub repository | ✅ | Public `main` branch opens and CI run 19 passes |
 | P7-09 | Perform final delivery checklist review | ✅ | Every must-have has implementation, executable verification, or curated evidence |
-| P7-10 | Submit repository URL using the required email process | ⛔ | Awaiting explicit user approval; no archive attachment will be sent |
+| P7-10 | Submit repository URL using the required email process | ✅ | User confirmed the approved repository-link email was sent without an archive attachment |
 
 ## 11. Phase 8: Optional depth
 
@@ -288,4 +288,4 @@ Discovery is deliberately integrated after replay, safety, and handoff. This mak
 
 ## 15. Next action
 
-Request explicit user approval before P7-10. The public repository is technically submission-ready; optional desktop and external-sandbox work remains deferred until submission.
+Mandatory delivery is complete. The public repository was submitted after explicit user approval; optional desktop and external-sandbox work remains deliberately deferred.

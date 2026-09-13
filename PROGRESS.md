@@ -1,8 +1,8 @@
 # Delivery Progress
 
-**Overall status:** Implementation, migration, and validation complete; submission awaits explicit approval
+**Overall status:** Mandatory implementation, migration, validation, and submission complete
 **Last updated:** 2026-09-13
-**Current milestone:** Submission-ready
+**Current milestone:** Submitted
 **Detailed plan:** [Implementation plan](docs/implementation-plan.md)
 **Design:** [Design specification](docs/design-spec.md)
 
@@ -27,7 +27,7 @@
 | 4. Human handoff | ✅ | 8 of 8 | Same-session intervention passes |
 | 5. Genuine Gemini discovery | ✅ | 10 of 10 | Generated artifact replays with Gemini disabled |
 | 6. Mandatory demonstration | ✅ | 10 of 10 | All required synthetic evidence captured |
-| 7. Quality and submission | ⛔ | 9 of 10 | Technical work is complete; final submission awaits explicit approval |
+| 7. Quality and submission | ✅ | 10 of 10 | Public repository submitted after explicit approval |
 | 8. Optional depth | ➖ | 0 of 6 | Submission-ready gate passed; optional work deliberately deferred |
 
 ## Completed implementation
@@ -125,6 +125,7 @@ These rows are validation categories, not limits on what the engine can discover
 | 2026-09-10 | Approve the design baseline and begin contract-first implementation | Starts the minimum vertical slice without introducing model or browser variability |
 | 2026-09-10 | Publish the public repository under the configured GitHub owner | Enables hosted cross-platform validation and public delivery |
 | 2026-09-10 | Complete the Phase 1 hosted gate | Windows, Ubuntu, and secret scanning passed on committed source |
+| 2026-09-13 | Submit the public repository after explicit approval | Completes the mandatory delivery process without attaching an archive |
 
 ## Open decisions
 
@@ -138,7 +139,7 @@ These rows are validation categories, not limits on what the engine can discover
 
 ## Blockers
 
-There are no technical blockers. GitHub Actions run 34787942129 passed its Windows job, Ubuntu job, secret scan, and final workflow check. Fresh-clone Release validation passed with 0 warnings and 0 errors (232 passed, 0 failed, 0 skipped). Final submission is approval-gated, and optional Phase 8 work remains deliberately deferred.
+There are no technical blockers. GitHub Actions run 34787942129 passed its Windows job, Ubuntu job, secret scan, and final workflow check. Fresh-clone Release validation passed with 0 warnings and 0 errors (232 passed, 0 failed, 0 skipped). The user confirmed that the approved repository submission was sent. Optional Phase 8 work remains deliberately deferred.
 
 ## Update protocol
 
