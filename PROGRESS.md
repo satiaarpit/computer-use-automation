@@ -1,8 +1,8 @@
 # Delivery Progress
 
-**Overall status:** Implementation in progress
+**Overall status:** Implementation, migration, and validation complete; submission awaits explicit approval
 **Last updated:** 2026-09-13
-**Current milestone:** Quality and submission validation
+**Current milestone:** Submission-ready
 **Detailed plan:** [Implementation plan](docs/implementation-plan.md)
 **Design:** [Design specification](docs/design-spec.md)
 
@@ -27,10 +27,10 @@
 | 4. Human handoff | ✅ | 8 of 8 | Same-session intervention passes |
 | 5. Genuine Gemini discovery | ✅ | 10 of 10 | Generated artifact replays with Gemini disabled |
 | 6. Mandatory demonstration | ✅ | 10 of 10 | All required synthetic evidence captured |
-| 7. Quality and submission | 🟡 | 9 of 10 | Public repository is submission-ready; submission awaits approval |
-| 8. Optional depth | ➖ | 0 of 6 | Begins only after submission-ready gate |
+| 7. Quality and submission | ⛔ | 9 of 10 | Technical work is complete; final submission awaits explicit approval |
+| 8. Optional depth | ➖ | 0 of 6 | Submission-ready gate passed; optional work deliberately deferred |
 
-## Current focus
+## Completed implementation
 
 | Priority | Item | Status | Next action |
 |---:|---|---|---|
@@ -74,12 +74,12 @@
 | Human control of the same live session | ✅ | ✅ | ✅ | ✅ |
 | Human-action recording | ✅ | ✅ | ✅ | ✅ |
 | Safe resume after handoff | ✅ | ✅ | ✅ | ✅ |
-| Legacy web and desktop extension design | ✅ | ⬜ | ⬜ | ⬜ |
-| Multi-tenant reuse and drift design | ✅ | ⬜ | ⬜ | ⬜ |
+| Legacy web and desktop extension design | ✅ | ➖ | ➖ | ➖ |
+| Multi-tenant reuse and drift design | ✅ | ➖ | ➖ | ➖ |
 | Setup and exact demo path | ✅ | ✅ | ✅ | ✅ |
 | Required seven-section report | ✅ | ✅ | ✅ | ✅ |
 | Discovery, replay, and exceptional evidence | ✅ | ✅ | ✅ | ✅ |
-| Public repository and submission process | ✅ | ✅ | ✅ | 🟡 |
+| Public repository and submission process | ✅ | ✅ | ✅ | ✅ |
 
 ## Capability-family progress
 
@@ -87,7 +87,7 @@ These rows are validation categories, not limits on what the engine can discover
 
 | Capability family | Priority | Discovery | Artifact | Replay | Outcomes | Handoff | Evidence |
 |---|---:|---|---|---|---|---|---|
-| Search and typed extraction | 1 | ✅ | ✅ | ✅ | 🟡 | N/A | 🟡 |
+| Search and typed extraction | 1 | ✅ | ✅ | ✅ | ✅ | N/A | ✅ |
 | Navigation to verified review state | 2 | N/A | ✅ | ✅ | ✅ | N/A | ✅ |
 | Reversible UI interaction | 3 | N/A | ✅ | ✅ | ✅ | Optional | ✅ |
 | Risk-gated final action | 4 | N/A | ✅ | ✅ | ✅ | ✅ | ✅ |
@@ -131,14 +131,14 @@ These rows are validation categories, not limits on what the engine can discover
 | Decision | Blocks current work | Recommended default | Status |
 |---|---|---|---|
 | Gemini model default | No | `gemini-3.6-flash`, configurable through `GEMINI_MODEL` | Decided |
-| Initial live validation target | No | Automation-permitted, repeatable, non-destructive web surface | Open |
+| Initial live validation target | No | Deterministic, non-destructive browser fixture | Resolved: genuine Gemini discovery and model-free replay verified |
 | External validation site | No | Choose an automation-friendly sandbox after mandatory completion | Deferred |
 | WPF desktop implementation | No | Add only if schedule permits | Deferred |
-| Public repository name and owner | No | Decide before publication | Open |
+| Public repository name and owner | No | Decide before publication | Resolved: published at commit `29c99a4b7a41e91eacdea8dbb3ef9adeb5650a1a` with 116 tracked files and noreply identity |
 
 ## Blockers
 
-There are no technical blockers. CI run 19 passes on Windows and Linux with 232 tests, and the full-history secret scan passes. Final submission remains blocked pending explicit user approval. Optional external/native platform breadth remains deliberately deferred.
+There are no technical blockers. GitHub Actions run 34787942129 passed its Windows job, Ubuntu job, secret scan, and final workflow check. Fresh-clone Release validation passed with 0 warnings and 0 errors (232 passed, 0 failed, 0 skipped). Final submission is approval-gated, and optional Phase 8 work remains deliberately deferred.
 
 ## Update protocol
 
