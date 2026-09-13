@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "runId": "c6243a4d110f48cf9da5e46663e97bf4",
+  "provider": "gemini",
+  "model": "gemini-3.6-flash",
+  "goalCommitment": "fd45efc39c3010ba2c356c8efd0a290126fbe06a3a6ab334af6a9d92ae36e001",
+  "inputCommitments": {
+    "query": "739c37ec275b25a857b8b17c75591620732a60e374d0c19b2854e1246fe21bad"
+  },
+  "modelCallCount": 2,
+  "status": "completed",
+  "capabilityId": "discovered-capability.v1",
+  "artifactSha256": "47ba1b1c73a401c8c8feb96c46486a8674175c5873309e6ab2a594e24b9ab8cc"
+}

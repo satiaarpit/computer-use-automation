@@ -1,0 +1,55 @@
+{
+  "runId": "3d3b230e0793481e8dec0d99c0eb36f8",
+  "status": "success",
+  "steps": [
+    {
+      "stepId": "enter-reference",
+      "succeeded": true,
+      "attempts": 1,
+      "value": null,
+      "matchedStrategy": "StableId",
+      "errorCode": null,
+      "safeMessage": null
+    },
+    {
+      "stepId": "submit-final",
+      "succeeded": true,
+      "attempts": 1,
+      "value": null,
+      "matchedStrategy": "human",
+      "errorCode": null,
+      "safeMessage": null
+    }
+  ],
+  "validation": {
+    "issues": [],
+    "isValid": true
+  },
+  "failure": null,
+  "outputs": {},
+  "outcomeCode": null,
+  "evidence": [
+    {
+      "kind": "screenshot",
+      "relativePath": "surface-20260912221129821.png",
+      "classification": "internal",
+      "protection": "redacted"
+    },
+    {
+      "kind": "snapshot",
+      "relativePath": "surface-20260912221130230.txt",
+      "classification": "internal",
+      "protection": "redacted"
+    }
+  ],
+  "operatorDecision": "resume",
+  "interventionSummary": {
+    "approvalRecorded": true,
+    "humanActionSucceeded": true,
+    "sessionContinuityCommitment": "964ea355d8c706a2ebceca799b8ce2f9d537bfbcdf5a6fc5111c30d9184c9438",
+    "finalOwner": "automation",
+    "finalControlVersion": 4,
+    "resumeValidationSucceeded": true
+  },
+  "outputCommitments": {}
+}

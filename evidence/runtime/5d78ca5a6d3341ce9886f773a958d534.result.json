@@ -1,0 +1,30 @@
+{
+  "runId": "5d78ca5a6d3341ce9886f773a958d534",
+  "status": "success",
+  "steps": [
+    {
+      "stepId": "step-1",
+      "succeeded": true,
+      "attempts": 1,
+      "value": "[REDACTED] Atlas",
+      "matchedStrategy": "Css",
+      "errorCode": null,
+      "safeMessage": null
+    }
+  ],
+  "validation": {
+    "issues": [],
+    "isValid": true
+  },
+  "failure": null,
+  "outputs": {
+    "record_title": "[REDACTED] Atlas"
+  },
+  "outcomeCode": null,
+  "evidence": [],
+  "operatorDecision": null,
+  "interventionSummary": null,
+  "outputCommitments": {
+    "record_title": "a528106a3fc3507607355ac2004dca50b37051bc84b610c2d224d9eebfed4e5b"
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "capabilityId": "reversible-interaction.v1",
+  "name": "Prepare a reversible review form",
+  "description": "Fills synthetic review fields without performing the consequential final action.",
+  "target": {
+    "surface": "web",
+    "entryPointTemplate": "http://127.0.0.1:5187/review?state=risky-submit"
+  },
+  "risk": "reversibleWrite",
+  "inputs": [
+    {
+      "name": "reference",
+      "type": "string",
+      "required": true,
+      "classification": "internal",
+      "pattern": "^REC-[0-9]{3}$"
+    },
+    {
+      "name": "note",
+      "type": "string",
+      "required": true,
+      "classification": "internal",
+      "pattern": "^.{1,200}$"
+    }
+  ],
+  "outputs": [],
+  "steps": [
+    {
+      "id": "enter-reference",
+      "action": {
+        "kind": "type",
+        "target": {
+          "strategies": [
+            { "kind": "stableId", "value": "reference" }
+          ],
+          "requireUniqueMatch": true
+        },
+        "valueTemplate": "${reference}"
+      },
+      "preconditions": [],
+      "timeout": "00:00:15",
+      "retry": { "maxAttempts": 1, "delay": "00:00:00", "recoverableConditionCodes": [] },
+      "risk": "reversibleWrite"
+    },
+    {
+      "id": "enter-note",
+      "action": {
+        "kind": "type",
+        "target": {
+          "strategies": [
+            { "kind": "stableId", "value": "note" }
+          ],
+          "requireUniqueMatch": true
+        },
+        "valueTemplate": "${note}"
+      },
+      "preconditions": [],
+      "timeout": "00:00:15",
+      "retry": { "maxAttempts": 1, "delay": "00:00:00", "recoverableConditionCodes": [] },
+      "risk": "reversibleWrite"
+    }
+  ],
+  "outcomes": [],
+  "checkpoint": {
+    "kind": "valueEquals",
+    "target": {
+      "strategies": [
+        { "kind": "stableId", "value": "note" }
+      ],
+      "requireUniqueMatch": true
+    },
+    "expectedTemplate": "${note}",
+    "negate": false
+  },
+  "provenance": {
+    "discoveryRunId": "synthetic-reversible-demonstration",
+    "createdAt": "2026-09-11T00:00:00+00:00",
+    "generatorVersion": "0.2.0",
+    "model": "demonstration-fixture"
+  }
+}

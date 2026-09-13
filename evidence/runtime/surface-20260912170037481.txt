@@ -1,0 +1,37 @@
+url-origin: http://127.0.0.1:5187
+title: Deterministic UI Fixture
+fingerprint: c7b0820b121939f528c03caf081a8b0387be40d97f9754d86dd4eb6a697358e2
+truncated: False
+interactive-elements:
+- type=a; id=; name=Fixture home; value=[OMITTED]
+- type=a; id=; name=Search; value=[OMITTED]
+- type=a; id=open-review; name=Review form; value=[OMITTED]
+- type=h1; id=page-title; name=Deterministic UI Fixture; value=[OMITTED]
+- type=h2; id=review-title; name=Review proposed change; value=[OMITTED]
+- type=input; id=reference; name=Reference; value=[OMITTED]
+- type=textarea; id=note; name=Review note; value=[OMITTED]
+- type=submit; id=submit-final; name=Submit final change; value=[OMITTED]
+- type=status; id=submit-status; name=Awaiting review; value=[OMITTED]
+visible-text:
+Interface Fixture
+Search
+Review form
+
+CONTROLLED AUTOMATION SURFACE
+
+Deterministic UI Fixture
+
+Repeatable states for semantic targeting, typed extraction, navigation, recovery, and intervention tests.
+
+CONSEQUENTIAL ACTION
+
+Review proposed change
+
+The fixture accepts form input but blocks final submission for human review.
+
+Browser session: [REDACTED]
+
+Reference
+Review note
+ Submit final change
+Awaiting review

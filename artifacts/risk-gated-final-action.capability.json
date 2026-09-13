@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "capabilityId": "risk-gated-final-action.v1",
+  "name": "Submit a reviewed synthetic change",
+  "description": "Prepares a synthetic review form and transfers the final consequential action to a human in the same browser session.",
+  "target": {
+    "surface": "web",
+    "entryPointTemplate": "http://127.0.0.1:5187/review?state=risky-submit"
+  },
+  "risk": "irreversible",
+  "inputs": [
+    {
+      "name": "reference",
+      "type": "string",
+      "required": true,
+      "classification": "internal",
+      "pattern": "^REC-[0-9]{3}$"
+    }
+  ],
+  "outputs": [],
+  "steps": [
+    {
+      "id": "enter-reference",
+      "action": {
+        "kind": "type",
+        "target": {
+          "strategies": [
+            { "kind": "stableId", "value": "reference" }
+          ],
+          "requireUniqueMatch": true
+        },
+        "valueTemplate": "${reference}"
+      },
+      "preconditions": [],
+      "timeout": "00:00:15",
+      "retry": { "maxAttempts": 1, "delay": "00:00:00", "recoverableConditionCodes": [] },
+      "risk": "reversibleWrite"
+    },
+    {
+      "id": "submit-final",
+      "action": {
+        "kind": "click",
+        "target": {
+          "strategies": [
+            { "kind": "stableId", "value": "submit-final" }
+          ],
+          "requireUniqueMatch": true
+        }
+      },
+      "preconditions": [],
+      "postcondition": {
+        "kind": "textContains",
+        "target": {
+          "strategies": [
+            { "kind": "stableId", "value": "submit-status" }
+          ],
+          "requireUniqueMatch": true
+        },
+        "expectedTemplate": "blocked for human review",
+        "negate": false
+      },
+      "timeout": "00:00:15",
+      "retry": { "maxAttempts": 1, "delay": "00:00:00", "recoverableConditionCodes": [] },
+      "risk": "irreversible"
+    }
+  ],
+  "outcomes": [],
+  "checkpoint": {
+    "kind": "textContains",
+    "target": {
+      "strategies": [
+        { "kind": "stableId", "value": "submit-status" }
+      ],
+      "requireUniqueMatch": true
+    },
+    "expectedTemplate": "blocked for human review",
+    "negate": false
+  },
+  "provenance": {
+    "discoveryRunId": "synthetic-handoff-demonstration",
+    "createdAt": "2026-09-11T00:00:00+00:00",
+    "generatorVersion": "0.2.0",
+    "model": "demonstration-fixture"
+  }
+}

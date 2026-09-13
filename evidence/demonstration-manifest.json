@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "manifestId": "phase-6-demonstration.v1",
+  "generatedAt": "2026-09-12T19:58:36Z",
+  "scenarios": [
+    {
+      "id": "genuine-discovery-artifact-replay",
+      "capabilityId": "discovered-capability.v1",
+      "discoveryRunId": "c6243a4d110f48cf9da5e46663e97bf4",
+      "expectedStatus": "success",
+      "runId": "5d78ca5a6d3341ce9886f773a958d534",
+      "invocation": ["replay", "artifacts/generated/search.json", "query", "Borealis"],
+      "expectedOutputTemplates": { "record_title": "${query} Atlas" },
+      "expectedEvents": ["runStarted", "policyEvaluated", "actionCompleted", "runCompleted"],
+      "files": [
+        { "role": "capability", "path": "artifacts/generated/search.json", "sha256": "47ba1b1c73a401c8c8feb96c46486a8674175c5873309e6ab2a594e24b9ab8cc" },
+        { "role": "discoveryEventLog", "path": "evidence/runtime/c6243a4d110f48cf9da5e46663e97bf4.events.jsonl", "sha256": "582af72374195a010aef335bd1687422c89ab9d558324d0ba1845c5007f74a63" },
+        { "role": "discoveryReceipt", "path": "evidence/runtime/c6243a4d110f48cf9da5e46663e97bf4.discovery.json", "sha256": "faab29f3621dbc07ab0a7fbfda8d18e51276cd007bb019f67f985a091cde265e" },
+        { "role": "eventLog", "path": "evidence/runtime/5d78ca5a6d3341ce9886f773a958d534.events.jsonl", "sha256": "b40dd6ffeeb682bcfd939f211c87e014b484b10b1e9d6a9e39d795563f6830b2" },
+        { "role": "result", "path": "evidence/runtime/5d78ca5a6d3341ce9886f773a958d534.result.json", "sha256": "687b89becf7677e022321fa0607032aaa35820e6221053a191a6c84bb8f47796" }
+      ]
+    },
+    {
+      "id": "typed-model-free-replay",
+      "capabilityId": "search-and-extract.v1",
+      "expectedStatus": "success",
+      "runId": "046ca658c36443ab9e1b43387f558f01",
+      "expectedOutputTemplates": { "title": "${query} Atlas" },
+      "invocation": ["replay", "artifacts/search-and-extract.capability.json", "query", "Borealis"],
+      "expectedEvents": ["runStarted", "policyEvaluated", "actionCompleted", "policyEvaluated", "actionCompleted", "policyEvaluated", "actionCompleted", "runCompleted"],
+      "files": [
+        { "role": "capability", "path": "artifacts/search-and-extract.capability.json", "sha256": "17f2ddd95daf95312c639398926d3f8c8e2104e24fdef2539f3ed978446037ac" },
+        { "role": "eventLog", "path": "evidence/runtime/046ca658c36443ab9e1b43387f558f01.events.jsonl", "sha256": "31f4af9b6f728d62415b08d3a83dd8f518301a4b85979455d64f6ff329f10864" },
+        { "role": "result", "path": "evidence/runtime/046ca658c36443ab9e1b43387f558f01.result.json", "sha256": "cb7298cb0eaa66109904dd7c43e8b7df54dd7579800d45e9b38167c96bb8ea52" }
+      ]
+    },
+    {
+      "id": "navigation-to-review",
+      "capabilityId": "navigation-to-review.v1",
+      "expectedStatus": "success",
+      "runId": "a6bc4b49d5c9449f97c387b1a8d3c6cb",
+      "invocation": ["replay", "artifacts/navigation-to-review.capability.json"],
+      "expectedEvents": ["runStarted", "policyEvaluated", "actionCompleted", "runCompleted"],
+      "files": [
+        { "role": "capability", "path": "artifacts/navigation-to-review.capability.json", "sha256": "e125fa9e48349c5fae939f33d42f422433a55bb6902ad869d945fd05dea75707" },
+        { "role": "eventLog", "path": "evidence/runtime/a6bc4b49d5c9449f97c387b1a8d3c6cb.events.jsonl", "sha256": "20b261dd1a5ad127e950b2ecee90cfccbee1e327f33a3d7aaebcbf327f149eb0" },
+        { "role": "result", "path": "evidence/runtime/a6bc4b49d5c9449f97c387b1a8d3c6cb.result.json", "sha256": "91a2356f1a339b10da720b128edfded297c3f29e4376923e41cfa6e5eb127895" }
+      ]
+    },
+    {
+      "id": "reversible-interaction",
+      "capabilityId": "reversible-interaction.v1",
+      "expectedStatus": "success",
+      "runId": "b524623270a94804afb41f7c34473745",
+      "invocation": ["replay", "artifacts/reversible-interaction.capability.json", "reference", "REC-300", "note", "Review synthetic record."],
+      "expectedEvents": ["runStarted", "policyEvaluated", "actionCompleted", "policyEvaluated", "actionCompleted", "runCompleted"],
+      "files": [
+        { "role": "capability", "path": "artifacts/reversible-interaction.capability.json", "sha256": "70e138066d43e2706b1001e77acbe2fb441104954fac36b36b68a5db795e2828" },
+        { "role": "eventLog", "path": "evidence/runtime/b524623270a94804afb41f7c34473745.events.jsonl", "sha256": "8c5be518a3b38232f4547e38aae510375e2a09079c504d1ac92088cf79956e11" },
+        { "role": "result", "path": "evidence/runtime/b524623270a94804afb41f7c34473745.result.json", "sha256": "7e8ef2749d89592b89855d8f2c89c79fb2d045286c7201b9ce138466b885121e" }
+      ]
+    },
+    {
+      "id": "bounded-recoverable-condition",
+      "capabilityId": "recoverable-read.v1",
+      "expectedStatus": "success",
+      "runId": "d6641853110a4a0995bd06b2424dd3d3",
+      "expectedOutputTemplates": { "title": "${query} Field Guide" },
+      "invocation": ["replay", "artifacts/recoverable-read.capability.json", "query", "Aurora"],
+      "expectedEvents": ["runStarted", "policyEvaluated", "actionCompleted", "policyEvaluated", "actionCompleted", "policyEvaluated", "actionCompleted", "runCompleted"],
+      "files": [
+        { "role": "capability", "path": "artifacts/recoverable-read.capability.json", "sha256": "94fcbcaf7716c1505027dc57acca337b2a30592852b9b7929f813b45ca5ff89e" },
+        { "role": "eventLog", "path": "evidence/runtime/d6641853110a4a0995bd06b2424dd3d3.events.jsonl", "sha256": "39db9782b1b7a28501626afcb5915d16481aa9ec0035111ff95768987f7df54a" },
+        { "role": "result", "path": "evidence/runtime/d6641853110a4a0995bd06b2424dd3d3.result.json", "sha256": "044a7a7548aab4907454c4d3bd26dad6dd49e486cfc913abc72316ff7c84fc1a" }
+      ]
+    },
+    {
+      "id": "known-business-outcome",
+      "capabilityId": "search-and-extract.v1",
+      "expectedStatus": "businessOutcome",
+      "runId": "4f2b3da6e4da41a2a35cb02ff70a2c14",
+      "invocation": ["replay", "artifacts/search-and-extract.capability.json", "query", "ZZZ-No-Match"],
+      "expectedEvents": ["runStarted", "policyEvaluated", "actionCompleted", "policyEvaluated", "actionCompleted", "policyEvaluated", "actionCompleted", "policyEvaluated", "actionCompleted", "policyEvaluated", "actionCompleted", "policyEvaluated", "actionCompleted", "runCompleted"],
+      "files": [
+        { "role": "capability", "path": "artifacts/search-and-extract.capability.json", "sha256": "17f2ddd95daf95312c639398926d3f8c8e2104e24fdef2539f3ed978446037ac" },
+        { "role": "eventLog", "path": "evidence/runtime/4f2b3da6e4da41a2a35cb02ff70a2c14.events.jsonl", "sha256": "c19df6a9c53bb856a9ad187e473b9b209754cb9b93d3e0f46188cbce0b0d0efd" },
+        { "role": "result", "path": "evidence/runtime/4f2b3da6e4da41a2a35cb02ff70a2c14.result.json", "sha256": "80f710cf4e3bce4b05cf34f568c60f13de15b8792c00d87010cb9581e2254424" }
+      ]
+    },
+    {
+      "id": "hard-failure-with-debugging-evidence",
+      "capabilityId": "hard-failure-demonstration.v1",
+      "expectedStatus": "failed",
+      "runId": "0b6b97a7ce034969b6ae7249778ede4d",
+      "invocation": ["replay", "artifacts/hard-failure-demonstration.capability.json"],
+      "expectedEvents": ["runStarted", "policyEvaluated", "actionCompleted", "runCompleted"],
+      "files": [
+        { "role": "capability", "path": "artifacts/hard-failure-demonstration.capability.json", "sha256": "23edcd35340110d6f9b2fd66b6ca79be24a260325cf29da93701d24105ba7a94" },
+        { "role": "eventLog", "path": "evidence/runtime/0b6b97a7ce034969b6ae7249778ede4d.events.jsonl", "sha256": "e70fc4add1a93baa7f4b83c2a70db0614727ec35c6e9eca657f8298fc8d22982" },
+        { "role": "result", "path": "evidence/runtime/0b6b97a7ce034969b6ae7249778ede4d.result.json", "sha256": "a94a432ceb0b790b63050ebd2a8ef73df9467e236cb9a32f8b84cd5cf4664f1c" },
+        { "role": "screenshot", "path": "evidence/runtime/surface-20260912170037235.png", "sha256": "6305d2ded60eb201cd2ff01c146a8983f3846a74301677aaeaa5ef71f96685f6" },
+        { "role": "snapshot", "path": "evidence/runtime/surface-20260912170037481.txt", "sha256": "95d76e5fd2e14ef0a9ff9246d7a4c0ad171b7078d6d30e1f1e0a7655b196cc83" }
+      ]
+    },
+    {
+      "id": "approved-same-session-handoff",
+      "capabilityId": "risk-gated-final-action.v1",
+      "expectedStatus": "success",
+      "runId": "3d3b230e0793481e8dec0d99c0eb36f8",
+      "invocation": ["replay-interactive", "artifacts/risk-gated-final-action.capability.json", "reference", "REC-100"],
+      "operatorApproval": "APPROVE",
+      "expectedEvents": ["runStarted", "policyEvaluated", "actionCompleted", "policyEvaluated", "controlTransferred", "humanApprovalRecorded", "humanActionCompleted", "sessionContinuityVerified", "controlTransferred", "runCompleted"],
+      "files": [
+        { "role": "capability", "path": "artifacts/risk-gated-final-action.capability.json", "sha256": "b6f4cd48871f2ee0734bd59addf8fcf93f73437af9ece1b3b7d5c412e67f64d7" },
+        { "role": "eventLog", "path": "evidence/runtime/3d3b230e0793481e8dec0d99c0eb36f8.events.jsonl", "sha256": "4220b998ff6a41d358e01811ae7d03c3f25c72184ff07fa8c130e5f0ea39e4cf" },
+        { "role": "result", "path": "evidence/runtime/3d3b230e0793481e8dec0d99c0eb36f8.result.json", "sha256": "210856c44241d4f7988eb15e3030bd503920cfbef1354f568412ba53a92e4b9b" },
+        { "role": "screenshot", "path": "evidence/runtime/surface-20260912221129821.png", "sha256": "1c0728c0b524167f63d98bbe24fd3f4d6dab428c37ee1e363bf03a260f35146f" },
+        { "role": "snapshot", "path": "evidence/runtime/surface-20260912221130230.txt", "sha256": "732f1d6fa7d2bb7f8b2c5cc451823765d276b6c6179f2838fda76d79f320d287" }
+      ]
+    }
+  ]
+}

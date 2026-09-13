@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Deterministic UI Fixture</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="Fixture home">Interface Fixture</a>
+    <nav aria-label="Fixture scenarios">
+      <a href="/?state=success">Search</a>
+      <a id="open-review" href="/review?state=risky-submit">Review form</a>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <section class="hero" aria-labelledby="page-title">
+      <p class="eyebrow">Controlled automation surface</p>
+      <h1 id="page-title">Deterministic UI Fixture</h1>
+      <p>Repeatable states for semantic targeting, typed extraction, navigation, recovery, and intervention tests.</p>
+    </section>
+
+    <section id="search-view" class="panel" aria-labelledby="search-title">
+      <div class="panel-heading">
+        <div>
+          <p class="eyebrow">Catalog</p>
+          <h2 id="search-title">Search records</h2>
+        </div>
+        <span id="state-badge" class="badge" aria-live="polite">success</span>
+      </div>
+
+      <form id="search-form" role="search">
+        <label for="query">Record title or identifier</label>
+        <div class="input-row">
+          <input id="query" name="query" type="search" autocomplete="off" value="Aurora">
+          <button type="submit">Search</button>
+        </div>
+      </form>
+
+      <div id="status" class="status" role="status" aria-live="polite">Ready</div>
+      <div id="results" aria-label="Search results"></div>
+      <button id="redirect-escape" type="button" hidden>Open disallowed redirect</button>
+    </section>
+
+    <section id="review-view" class="panel" aria-labelledby="review-title" hidden>
+      <p class="eyebrow">Consequential action</p>
+      <h2 id="review-title">Review proposed change</h2>
+      <p>The fixture accepts form input but blocks final submission for human review.</p>
+      <p>Browser session: <span id="session-id">loading</span></p>
+      <form id="review-form">
+        <label for="reference">Reference</label>
+        <input id="reference" name="reference" value="REC-100" required>
+        <label for="note">Review note</label>
+        <textarea id="note" name="note" required>Approve the synthetic fixture change.</textarea>
+        <button id="submit-final" class="danger" type="submit">Submit final change</button>
+      </form>
+      <div id="submit-status" class="status" role="status" aria-live="polite">Awaiting review</div>
+    </section>
+  </main>
+
+  <dialog id="fixture-dialog" aria-labelledby="dialog-title">
+    <h2 id="dialog-title">Known informational dialog</h2>
+    <p>This predictable dialog tests explicit recovery before replay continues.</p>
+    <button id="dismiss-dialog" type="button">Continue</button>
+  </dialog>
+
+  <script src="/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "capabilityId": "discovered-capability.v1",
+  "name": "Discovered UI capability",
+  "description": "Search for the requested record, read its result, and complete when the requested value is visible",
+  "target": {
+    "surface": "web",
+    "applicationFamily": null,
+    "compatibleVersionRange": null,
+    "entryPointTemplate": "http://127.0.0.1:5187/?state=success\u0026query=${query}"
+  },
+  "risk": "safe",
+  "inputs": [
+    {
+      "name": "query",
+      "type": "string",
+      "required": true,
+      "classification": "internal",
+      "pattern": "^.{1,200}$",
+      "allowedValues": null
+    }
+  ],
+  "outputs": [
+    {
+      "name": "record_title",
+      "type": "string",
+      "extraction": {
+        "target": {
+          "strategies": [
+            {
+              "kind": "css",
+              "value": "#results \u003E article \u003E div \u003E h3",
+              "scope": null,
+              "controlType": null
+            }
+          ],
+          "requireUniqueMatch": true
+        },
+        "kind": "text",
+        "attributeName": null
+      },
+      "required": true,
+      "classification": "internal"
+    }
+  ],
+  "steps": [
+    {
+      "id": "step-1",
+      "action": {
+        "kind": "read",
+        "target": {
+          "strategies": [
+            {
+              "kind": "css",
+              "value": "#results \u003E article \u003E div \u003E h3",
+              "scope": null,
+              "controlType": null
+            }
+          ],
+          "requireUniqueMatch": true
+        },
+        "valueTemplate": null,
+        "destination": null,
+        "outputName": "record_title",
+        "duration": null
+      },
+      "preconditions": [],
+      "postcondition": null,
+      "timeout": "00:00:15",
+      "retry": {
+        "maxAttempts": 4,
+        "delay": "00:00:00.2500000",
+        "recoverableConditionCodes": [
+          "target-not-found"
+        ]
+      },
+      "risk": "safe"
+    }
+  ],
+  "outcomes": [
+    {
+      "code": "target-not-found",
+      "description": "The asynchronous result target is not visible yet.",
+      "kind": "recoverableCondition",
+      "detection": {
+        "kind": "hidden",
+        "target": {
+          "strategies": [
+            {
+              "kind": "css",
+              "value": "#results \u003E article \u003E div \u003E h3",
+              "scope": null,
+              "controlType": null
+            }
+          ],
+          "requireUniqueMatch": true
+        },
+        "expectedTemplate": null,
+        "negate": false
+      }
+    }
+  ],
+  "checkpoint": {
+    "kind": "textContains",
+    "target": {
+      "strategies": [
+        {
+          "kind": "text",
+          "value": "1 result",
+          "scope": null,
+          "controlType": null
+        }
+      ],
+      "requireUniqueMatch": true
+    },
+    "expectedTemplate": "1 result",
+    "negate": false
+  },
+  "provenance": {
+    "discoveryRunId": "c6243a4d110f48cf9da5e46663e97bf4",
+    "createdAt": "2026-09-12T22:02:05.4916207+00:00",
+    "generatorVersion": "0.2.0",
+    "model": "gemini-3.6-flash"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "capabilityId": "navigation-to-review.v1",
+  "name": "Navigate to a review state",
+  "description": "Navigates from the synthetic fixture home page to a verifiable review state.",
+  "target": {
+    "surface": "web",
+    "entryPointTemplate": "http://127.0.0.1:5187/?state=success"
+  },
+  "risk": "safe",
+  "inputs": [],
+  "outputs": [],
+  "steps": [
+    {
+      "id": "open-review",
+      "action": {
+        "kind": "click",
+        "target": {
+          "strategies": [
+            { "kind": "stableId", "value": "open-review" }
+          ],
+          "requireUniqueMatch": true
+        }
+      },
+      "preconditions": [],
+      "timeout": "00:00:15",
+      "retry": {
+        "maxAttempts": 1,
+        "delay": "00:00:00",
+        "recoverableConditionCodes": []
+      },
+      "risk": "safe"
+    }
+  ],
+  "outcomes": [],
+  "checkpoint": {
+    "kind": "textEquals",
+    "target": {
+      "strategies": [
+        { "kind": "stableId", "value": "review-title" }
+      ],
+      "requireUniqueMatch": true
+    },
+    "expectedTemplate": "Review proposed change",
+    "negate": false
+  },
+  "provenance": {
+    "discoveryRunId": "synthetic-navigation-demonstration",
+    "createdAt": "2026-09-11T00:00:00+00:00",
+    "generatorVersion": "0.2.0",
+    "model": "demonstration-fixture"
+  }
+}

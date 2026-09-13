@@ -1,0 +1,30 @@
+{
+  "runId": "d6641853110a4a0995bd06b2424dd3d3",
+  "status": "success",
+  "steps": [
+    {
+      "stepId": "read-delayed-result",
+      "succeeded": true,
+      "attempts": 3,
+      "value": "[REDACTED] Field Guide",
+      "matchedStrategy": "Css",
+      "errorCode": null,
+      "safeMessage": null
+    }
+  ],
+  "validation": {
+    "issues": [],
+    "isValid": true
+  },
+  "failure": null,
+  "outputs": {
+    "title": "[REDACTED] Field Guide"
+  },
+  "outcomeCode": null,
+  "evidence": [],
+  "operatorDecision": null,
+  "interventionSummary": null,
+  "outputCommitments": {
+    "title": "596f4f1d12273a62548e4eefa62e288205343b7e4c61058a447b7d54fe64581a"
+  }
+}

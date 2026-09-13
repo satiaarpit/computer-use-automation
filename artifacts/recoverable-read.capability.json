@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "capabilityId": "recoverable-read.v1",
+  "name": "Recover from delayed synthetic results",
+  "description": "Retries a declared transient target-not-found condition while the deterministic fixture delays its result.",
+  "target": {
+    "surface": "web",
+    "entryPointTemplate": "http://127.0.0.1:5187/?state=slow-load&query=${query}"
+  },
+  "risk": "safe",
+  "inputs": [
+    {
+      "name": "query",
+      "type": "string",
+      "required": true,
+      "classification": "internal",
+      "pattern": "^.{1,100}$"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "title",
+      "type": "string",
+      "classification": "public",
+      "extraction": {
+        "target": { "strategies": [{ "kind": "css", "value": "#results > article > div > h3" }], "requireUniqueMatch": true },
+        "kind": "text"
+      },
+      "required": true
+    }
+  ],
+  "steps": [
+    {
+      "id": "read-delayed-result",
+      "action": {
+        "kind": "read",
+        "target": { "strategies": [{ "kind": "css", "value": "#results > article > div > h3" }], "requireUniqueMatch": true },
+        "outputName": "title"
+      },
+      "preconditions": [],
+      "timeout": "00:00:15",
+      "retry": { "maxAttempts": 4, "delay": "00:00:00.2500000", "recoverableConditionCodes": ["target-not-found"] },
+      "risk": "safe"
+    }
+  ],
+  "outcomes": [
+    {
+      "code": "target-not-found",
+      "description": "The delayed synthetic result is not visible yet.",
+      "kind": "recoverableCondition",
+      "detection": {
+        "kind": "hidden",
+        "target": { "strategies": [{ "kind": "css", "value": "#results > article > div > h3" }], "requireUniqueMatch": true },
+        "negate": false
+      }
+    }
+  ],
+  "checkpoint": {
+    "kind": "textEquals",
+    "target": { "strategies": [{ "kind": "stableId", "value": "status" }], "requireUniqueMatch": true },
+    "expectedTemplate": "1 result",
+    "negate": false
+  },
+  "provenance": {
+    "discoveryRunId": "synthetic-recovery-demonstration",
+    "createdAt": "2026-09-12T00:00:00+00:00",
+    "generatorVersion": "0.2.0",
+    "model": "demonstration-fixture"
+  }
+}

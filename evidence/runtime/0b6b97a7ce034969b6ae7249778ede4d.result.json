@@ -1,0 +1,41 @@
+{
+  "runId": "0b6b97a7ce034969b6ae7249778ede4d",
+  "status": "failed",
+  "steps": [
+    {
+      "stepId": "open-review",
+      "succeeded": true,
+      "attempts": 1,
+      "value": null,
+      "matchedStrategy": "StableId",
+      "errorCode": null,
+      "safeMessage": null
+    }
+  ],
+  "validation": {
+    "issues": [],
+    "isValid": true
+  },
+  "failure": {
+    "stepId": "checkpoint",
+    "code": "checkpoint-not-satisfied",
+    "message": "The replay steps completed, but the declared completion checkpoint was not satisfied."
+  },
+  "outputs": {},
+  "outcomeCode": null,
+  "evidence": [
+    {
+      "kind": "screenshot",
+      "relativePath": "surface-20260912170037235.png",
+      "classification": "internal",
+      "protection": "redacted"
+    },
+    {
+      "kind": "snapshot",
+      "relativePath": "surface-20260912170037481.txt",
+      "classification": "internal",
+      "protection": "redacted"
+    }
+  ],
+  "operatorDecision": null
+}

@@ -1,0 +1,174 @@
+{
+  "schemaVersion": 1,
+  "capabilityId": "search-and-extract.v1",
+  "name": "Search and extract a result",
+  "description": "Searches a permitted target and extracts the first matching result title.",
+  "target": {
+    "surface": "web",
+    "entryPointTemplate": "http://127.0.0.1:5187/?state=success"
+  },
+  "risk": "safe",
+  "inputs": [
+    {
+      "name": "query",
+      "type": "string",
+      "required": true,
+      "classification": "internal",
+      "pattern": "^.{1,100}$"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "title",
+      "type": "string",
+      "classification": "public",
+      "extraction": {
+        "target": {
+          "strategies": [
+            {
+              "kind": "css",
+              "value": "#results > article > div > h3"
+            }
+          ],
+          "requireUniqueMatch": true
+        },
+        "kind": "text"
+      },
+      "required": true
+    }
+  ],
+  "steps": [
+    {
+      "id": "enter-query",
+      "action": {
+        "kind": "type",
+        "target": {
+          "strategies": [
+            {
+              "kind": "stableId",
+              "value": "query"
+            }
+          ],
+          "requireUniqueMatch": true
+        },
+        "valueTemplate": "${query}"
+      },
+      "preconditions": [],
+      "timeout": "00:00:15",
+      "retry": {
+        "maxAttempts": 1,
+        "delay": "00:00:00",
+        "recoverableConditionCodes": []
+      },
+      "risk": "safe"
+    },
+    {
+      "id": "submit-search",
+      "action": {
+        "kind": "click",
+        "target": {
+          "strategies": [
+            {
+              "kind": "accessibleRoleAndName",
+              "value": "button:Search"
+            }
+          ],
+          "requireUniqueMatch": true
+        }
+      },
+      "preconditions": [],
+      "timeout": "00:00:15",
+      "retry": {
+        "maxAttempts": 1,
+        "delay": "00:00:00",
+        "recoverableConditionCodes": []
+      },
+      "risk": "safe"
+    },
+    {
+      "id": "read-result",
+      "action": {
+        "kind": "read",
+        "target": {
+          "strategies": [
+            {
+              "kind": "css",
+              "value": "#results > article > div > h3"
+            }
+          ],
+          "requireUniqueMatch": true
+        },
+        "outputName": "title"
+      },
+      "preconditions": [],
+      "timeout": "00:00:15",
+      "retry": {
+        "maxAttempts": 4,
+        "delay": "00:00:00.2500000",
+        "recoverableConditionCodes": [
+          "target-not-found"
+        ]
+      },
+      "risk": "safe"
+    }
+  ],
+  "outcomes": [
+    {
+      "code": "no-results",
+      "description": "The search completed without a matching result.",
+      "kind": "businessOutcome",
+      "detection": {
+        "kind": "textContains",
+        "target": {
+          "strategies": [
+            {
+              "kind": "stableId",
+              "value": "status"
+            }
+          ],
+          "requireUniqueMatch": true
+        },
+        "expectedTemplate": "No results",
+        "negate": false
+      }
+    },
+    {
+      "code": "target-not-found",
+      "description": "The asynchronous result target is not visible yet.",
+      "kind": "recoverableCondition",
+      "detection": {
+        "kind": "hidden",
+        "target": {
+          "strategies": [
+            {
+              "kind": "css",
+              "value": "#results > article > div > h3"
+            }
+          ],
+          "requireUniqueMatch": true
+        },
+        "negate": false
+      }
+    }
+  ],
+  "checkpoint": {
+    "kind": "textEquals",
+    "target": {
+      "strategies": [
+        {
+          "kind": "stableId",
+          "value": "status"
+        }
+      ],
+      "requireUniqueMatch": true
+    },
+    "expectedTemplate": "1 result",
+    "negate": false
+  },
+  "provenance": {
+    "discoveryRunId": "run-example",
+    "createdAt": "2026-09-10T00:00:00+00:00",
+    "generatorVersion": "0.1.0",
+    "model": "configurable"
+  }
+}
