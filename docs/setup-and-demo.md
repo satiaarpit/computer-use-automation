@@ -14,8 +14,8 @@ All examples use the local deterministic fixture and synthetic records. Replay d
 Run from a terminal:
 
 ```text
-git clone https://github.com/satiaarpit/compute-use-automatuion.git
-cd compute-use-automatuion
+git clone https://github.com/satiaarpit/compute-use-automation.git
+cd compute-use-automation
 dotnet restore ComputerUse.sln
 dotnet build ComputerUse.sln --configuration Release --no-restore
 pwsh tests/ComputerUse.Playwright.Tests/bin/Release/net8.0/playwright.ps1 install chromium

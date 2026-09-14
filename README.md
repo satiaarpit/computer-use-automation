@@ -1,6 +1,6 @@
 # Computer-Use Capability Generator
 
-[![CI](https://github.com/satiaarpit/compute-use-automatuion/actions/workflows/ci.yml/badge.svg)](https://github.com/satiaarpit/compute-use-automatuion/actions/workflows/ci.yml)
+[![CI](https://github.com/satiaarpit/compute-use-automation/actions/workflows/ci.yml/badge.svg)](https://github.com/satiaarpit/compute-use-automation/actions/workflows/ci.yml)
 
 A generic computer-use system that uses an LLM to discover workflows on live user interfaces, compiles successful runs into typed and versioned capabilities, and replays those capabilities deterministically for agent invocation.
 
